@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_explorer/pages/home.dart';
+import 'package:movie_explorer/routes/app_pages.dart';
+import 'package:movie_explorer/routes/app_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      initialRoute: AppPaths.HOME,
+      getPages: AppPages.routes,
     );
   }
 }
