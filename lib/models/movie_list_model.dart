@@ -1,12 +1,12 @@
-class Movies {
+class MovieList {
   int? page;
   List<Results>? results;
   int? totalPages;
   int? totalResults;
 
-  Movies({this.page, this.results, this.totalPages, this.totalResults});
+  MovieList({this.page, this.results, this.totalPages, this.totalResults});
 
-  Movies.fromJson(Map<String, dynamic> json) {
+  MovieList.fromJson(Map<String, dynamic> json) {
     page = json['page'];
     if (json['results'] != null) {
       results = <Results>[];
@@ -75,7 +75,8 @@ class Results {
     releaseDate = json['release_date'];
     title = json['title'];
     video = json['video'];
-    voteAverage = json['vote_average'];
+    //voteAverage = json['vote_average'];
+    voteAverage = double.parse(json['vote_average'].toString());
     voteCount = json['vote_count'];
   }
 
