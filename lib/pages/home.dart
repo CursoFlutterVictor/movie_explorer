@@ -19,21 +19,6 @@ class HomePage extends StatelessWidget {
         body: Obx(() {
           if (movieListController.loaded.value) {
             return ListViewHome(movieList: movieListController.movieList.value);
-            /*
-            return Expanded(
-                child: ListView.builder(
-                    itemCount:
-                        movieListController.movieList.value?.results!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        /*child: Text(movieListController
-                            .movieList.value!.results![index].title
-                            .toString(),
-                            */
-                        child: Text("1"),
-                      );
-                    }));
-                    */
           } else {
             return Text("Empty");
           }
