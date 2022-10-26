@@ -22,14 +22,17 @@ class ServiceGetMovies {
 
         final movieList = MovieList.fromJson(jsonDecode(response.body));
 
+        /*
         movieList.results?.forEach((element) {
           print(element.title);
         });
+        */
 
         return movieList;
       }
     } catch (error) {
-      print(error);
+      rethrow;
+      //print(error);
     }
 
     return null;
