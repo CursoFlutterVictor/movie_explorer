@@ -20,11 +20,18 @@ class MovieCard extends StatelessWidget {
         child: Card(
             child: Row(
           children: [
-            Image.network(
-              "http://image.tmdb.org/t/p/w300${movie?.posterPath}",
-              width: 80,
-              height: 100,
-            ),
+            // TODO: Aveces falla el Image.network, controlar error
+            /*
+            Image.network("http://image.tmdb.org/t/p/w300${movie?.posterPath}",
+                width: 80, height: 100, errorBuilder: (BuildContext context,
+                    Object exception, StackTrace? stackTrace) {
+              return const SizedBox(
+                width: 80,
+                height: 80,
+              );
+            }),*/
+            Image.network("http://image.tmdb.org/t/p/w300${movie?.posterPath}",
+                width: 80, height: 100),
             Expanded(
                 child: Text(
               maxLines: 1,

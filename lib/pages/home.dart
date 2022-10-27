@@ -14,8 +14,7 @@ class HomePage extends StatelessWidget {
     MovieBottomBarController bottomBarController = Get.find();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Movie Explorer"),
-      ),
+          title: const Text("Popular"), automaticallyImplyLeading: false),
       floatingActionButton: FloatingActionButton(
           child: const Icon(
             Icons.search,
@@ -23,16 +22,17 @@ class HomePage extends StatelessWidget {
             size: 30,
           ),
           onPressed: () {
-            movieListController.fillList();
+            movieListController.fillPopularList();
           }),
       body: Obx(() {
         // Al abrir la app estaremos en la home, con los populares.
         // Se cargara solo la primera vez
         if (bottomBarController.selectedIndex.value == 0) {
-          if (!movieListController.loaded.value) {
-            movieListController.fillList();
+          if (!movieListController.popularloaded.value) {
+            movieListController.fillPopularList();
           }
-          return MovieListView(movieList: movieListController.movieList.value);
+          return MovieListView(
+              movieList: movieListController.pupularMovieList.value);
         } else {
           return const Text("");
         }

@@ -10,26 +10,36 @@ class DetailPage extends StatelessWidget {
     MovieDetailController movieDetailController = Get.find();
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Movie Explorer"),
+          title: const Text("Movie details"),
         ),
         body: Obx(() {
-          return Center(
+          return SingleChildScrollView(
+              scrollDirection: Axis.vertical,
               child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                movieDetailController.selectedMovie.value!.title.toString(),
-                style: TextStyle(fontSize: 30),
-              ),
-              Image.network(
-                "http://image.tmdb.org/t/p/w300${movieDetailController.selectedMovie.value?.posterPath}",
-              ),
-              Text(
-                movieDetailController.selectedMovie.value!.overview.toString(),
-                style: TextStyle(fontSize: 15),
-              )
-            ],
-          ));
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        movieDetailController.selectedMovie.value!.title
+                            .toString(),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
+                      )),
+                  Image.network(
+                    "http://image.tmdb.org/t/p/w300${movieDetailController.selectedMovie.value?.posterPath}",
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Text(
+                        movieDetailController.selectedMovie.value!.overview
+                            .toString(),
+                        textAlign: TextAlign.justify,
+                        style: const TextStyle(fontSize: 15),
+                      ))
+                ],
+              ));
         }));
   }
 }

@@ -16,11 +16,6 @@ class MovieListView extends StatelessWidget {
 
       // Añado la fila
       rows.add(row);
-
-      // Añado un separador
-      rows.add(const SizedBox(
-        height: 10,
-      ));
     });
   }
 

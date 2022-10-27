@@ -18,10 +18,17 @@ class MovieBottomBar extends StatelessWidget {
               backgroundColor: Colors.blue,
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Search',
+              backgroundColor: Colors.green,
+            ),
+            /*
+            BottomNavigationBarItem(
               icon: Icon(Icons.auto_awesome_rounded),
               label: 'Top 10',
               backgroundColor: Colors.green,
             ),
+            */
             BottomNavigationBarItem(
               icon: Icon(Icons.favorite),
               label: 'Favourites',

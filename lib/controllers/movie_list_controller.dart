@@ -4,12 +4,26 @@ import 'package:movie_explorer/models/movie_list_model.dart';
 import 'package:movie_explorer/services/movies_service.dart';
 
 class MovieListController extends GetxController {
-  final Rx<MovieList?> movieList = MovieList().obs;
-  RxBool loaded = false.obs;
+  final Rx<MovieList?> pupularMovieList = MovieList().obs;
+  RxBool popularloaded = false.obs;
 
-  Future<void> fillList() async {
+  Future<void> fillPopularList() async {
     MovieList? list = await ServiceGetMovies.getPopularMovies(page: 1);
-    movieList.value = list;
-    loaded.value = true;
+    pupularMovieList.value = list;
+    popularloaded.value = true;
+  }
+
+  final Rx<MovieList?> searchMovieList = MovieList().obs;
+  RxBool searchLoaded = false.obs;
+
+  Future<void> fillSearchList({String? query}) async {
+    MovieList? list =
+        await ServiceGetMovies.searchMovies(query: query, page: 1);
+    if (list != null) {
+      searchMovieList.value = list;
+      searchLoaded.value = true;
+    } else {
+      searchLoaded.value = false;
+    }
   }
 }
