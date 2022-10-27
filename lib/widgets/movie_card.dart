@@ -12,6 +12,29 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     MovieDetailController movieDetailController = Get.find();
 
+    Image? img;
+
+    if (movie?.posterPath == null) {
+      img = Image.asset(
+        "assets/nocover.jpg",
+        width: 80,
+        height: 100,
+      );
+    } else {
+      try {
+        img = Image.network(
+            "http://image.tmdb.org/t/p/w300${movie?.posterPath}",
+            width: 80,
+            height: 100);
+      } catch (exception) {
+        img = Image.asset(
+          "assets/nocover.jpg",
+          width: 80,
+          height: 100,
+        );
+      }
+    }
+
     return GestureDetector(
         onTap: () {
           movieDetailController.selectedMovie.value = movie;
@@ -20,18 +43,7 @@ class MovieCard extends StatelessWidget {
         child: Card(
             child: Row(
           children: [
-            // TODO: Aveces falla el Image.network, controlar error
-            /*
-            Image.network("http://image.tmdb.org/t/p/w300${movie?.posterPath}",
-                width: 80, height: 100, errorBuilder: (BuildContext context,
-                    Object exception, StackTrace? stackTrace) {
-              return const SizedBox(
-                width: 80,
-                height: 80,
-              );
-            }),*/
-            Image.network("http://image.tmdb.org/t/p/w300${movie?.posterPath}",
-                width: 80, height: 100),
+            img,
             Expanded(
                 child: Text(
               maxLines: 1,
