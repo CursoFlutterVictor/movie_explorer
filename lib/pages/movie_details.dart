@@ -29,6 +29,13 @@ class DetailPage extends StatelessWidget {
                       )),
                   Image.network(
                     "http://image.tmdb.org/t/p/w300${movieDetailController.selectedMovie.value?.posterPath}",
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        "assets/nocover.jpg",
+                        width: 300,
+                        height: 300,
+                      );
+                    },
                   ),
                   Padding(
                       padding: const EdgeInsets.all(15),

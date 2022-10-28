@@ -21,18 +21,14 @@ class MovieCard extends StatelessWidget {
         height: 100,
       );
     } else {
-      try {
-        img = Image.network(
-            "http://image.tmdb.org/t/p/w300${movie?.posterPath}",
-            width: 80,
-            height: 100);
-      } catch (exception) {
-        img = Image.asset(
+      img = Image.network("http://image.tmdb.org/t/p/w300${movie?.posterPath}",
+          width: 80, height: 100, errorBuilder: (context, error, stackTrace) {
+        return Image.asset(
           "assets/nocover.jpg",
           width: 80,
           height: 100,
         );
-      }
+      });
     }
 
     return GestureDetector(
